@@ -39,6 +39,7 @@ class CheckoutController extends Controller
         if ($order = Order::create([
             'customer_id' => $customer_id,
             'orders_note' => $request->orders_note,
+            'customerName'=> $customerName,
         ])) {
             $orders_id = $order->id;
             foreach ($cart as $products_id => $item ) { 
@@ -53,13 +54,13 @@ class CheckoutController extends Controller
                 ]);
             }
             Mail::send('frontend.email.order', [
-              'order' => $order->id,
+              'order' => $order,
               'cart' => $cart,
               'name' => $customerName
-            ], function ($mail) use ($customerName,$customerEmail)
+            ], function ($mail) use ($customerEmail,$customerName)
              {
-                  $mail->to($customerName,$customerEmail);
                   $mail->from('vietd8k11@gmail.com');
+                  $mail->to($customerEmail,$customerName);
                   $mail->subject('Email Orders');
             });
             session(['cart' => '']);
