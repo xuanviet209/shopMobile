@@ -23,9 +23,11 @@
                <td>{{$item['name']}}</td>
                <td>{{$item['qty']}}</td>
                <td>{{$item['price']}}</td>
-               <td>{{$item['price']}}*{{$item['qty']}}</td>
+               <td>{{ number_format($item['price'] * $item['qty']) }}$</td>
             </tr>
         @endforeach
     </tbody>
 </table>
+
+<p>Tổng đơn hàng = {{ \Cart::priceTotal() }}$</p>
 
