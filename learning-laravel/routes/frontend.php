@@ -44,6 +44,7 @@ Route::get('checkout',[CheckoutController::class,'form'])->name('checkout');
 Route::post('checkout',[CheckoutController::class,'submitForm'])->name('checkout');
 Route::get('checkout/success',[CheckoutController::class,'success'])->name('checkout.success');
 
+Route::post('/check-coupon',[CheckoutController::class,'checkCoupon']);
 //Đăng ký
 Route::get('create',[CreateController::class,'form'])->name('create');
 Route::post('create',[CreateController::class,'success'])->name('create');

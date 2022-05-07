@@ -10,6 +10,7 @@ use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\CustomerController;
+use App\Http\Controllers\Backend\CouponController;
 
 
 /*
@@ -77,6 +78,9 @@ Route::prefix('admin')
     //Customer
     Route::get('customer',[CustomerController::class,'index'])->name('customer');
     
+    //Coupon
+    Route::get('coupon',[CouponController::class,'index'])->name('coupon');
+    Route::get('insert-coupon',[CouponController::class,'add'])->name('add.coupon');
 });
 
 Route::prefix('admin')->as('admin.')->group(function () {

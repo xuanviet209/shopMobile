@@ -27,7 +27,7 @@ class CheckoutController extends Controller
 
     public function success() 
     {
-         return view('frontend.checkout.success');
+      return view('frontend.checkout.success');
     }
 
     public function submitForm(Request $request, Cart $cart)
@@ -58,15 +58,21 @@ class CheckoutController extends Controller
               'cart' => $cart,
               'name' => $customerName
             ], function ($mail) use ($customerEmail,$customerName)
-             {
-                  $mail->from('vietd8k11@gmail.com');
-                  $mail->to($customerEmail,$customerName);
-                  $mail->subject('Email Orders');
+            {
+              $mail->from('vietd8k11@gmail.com');
+              $mail->to($customerEmail,$customerName);
+              $mail->subject('Email Orders');
             });
             session(['cart' => '']);
             return redirect()->route('fr.checkout.success')->with('success');
         }else{
             return redirect()->back()->with('error','Đặt hàng không thành công');
         }
+    }
+    
+    public function checkCoupon(Request $request)
+    {
+      $data = $request->all();
+      print_r($data);
     }
 }

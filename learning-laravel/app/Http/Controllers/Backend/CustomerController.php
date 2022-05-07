@@ -10,10 +10,9 @@ class CustomerController extends Controller
 {
     public function index()
     {   
-        
-        $listCustomers = Customer::get();
+      $listCustomers = Customer::get();
         return view('backend.customer.index',[
-            'customer' => $listCustomers
-        ]);
+          'customer' => $listCustomers
+      ]);
     }
 }

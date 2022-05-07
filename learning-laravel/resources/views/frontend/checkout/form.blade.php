@@ -128,13 +128,18 @@
                             </table>
                         </div>
                         <div class="row">
-                            <div class="col-lg-4 offset-lg-8">
+                            <div class="col-lg-5">
+                                <form action="{{ url('/check-coupon') }}" method="POST">
+                                    @csrf
+                                    <input type="text" class="form-control" name="coupon" placeholder="Nhập mã giảm giá">
+                                    <input type="submit" class="btn btn-primary" name="check_coupon" value="Tính mã giảm giá">
+                                </form>
+                            </div>
+                            <div class="col-lg-7">
                                 <div class="proceed-checkout">
                                     <ul>
-                                        {{-- <li class="subtotal">Subtotal <span>{{ number_format($item->price*$item->qty) }}$</span></li> --}}
                                         <li class="cart-total">Total <span>{{ \Cart::priceTotal() }}$</span></li>
                                     </ul>
-                                    <a href="{{ route('fr.checkout') }}" class="proceed-btn">CHECK OUT</a>
                                 </div>
                             </div>
                         </div>

@@ -20,12 +20,8 @@
                     Quản lý sản phẩm
                 </a>
                 <a class="nav-link" href="">
-                    <div class="sb-nav-link-icon"><i class="fas fa-palette"></i></div>
-                    Color
-                </a>
-                <a class="nav-link" href="">
-                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                    Size
+                    <div class="sb-nav-link-icon"><i class="fab fa-product-hunt"></i></div>
+                    Mã giảm giá
                 </a>
                 <a class="nav-link" href="{{ route('admin.user') }}">
                     <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>

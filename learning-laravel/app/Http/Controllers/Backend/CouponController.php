@@ -5,10 +5,10 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class AccountController extends Controller
+class CouponController extends Controller
 {
     public function index()
     {
-      return view('backend.account.index');
+        
     }
 }

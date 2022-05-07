@@ -44,7 +44,7 @@ class DashboardController extends Controller
         $category_count=Category::count();
         $user_count=User::count();
         $customer_count=Customer::count();
-        $orders = Order::where('status',0)->get();
+        $orders = Order::where('status',1)->get();
         return view('backend.dashboard.index',compact(
         'product_count',
         'brand_count',

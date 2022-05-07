@@ -10,18 +10,18 @@ class CreateController extends Controller
 {
     public function form() 
     {
-        return view('frontend.create');
+      return view('frontend.create');
     }
 
     public function success(Request $request)
     {
-    	Customer::create(
-            [
-                'name'=> $request->name,
-                'email'=> $request->email,
-                'phone'=> $request->phone,
-                'password'=> bcrypt($request->password),
-                'address' => $request->address
-            ]);
+      Customer::create(
+      [
+          'name'=> $request->name,
+          'email'=> $request->email,
+          'phone'=> $request->phone,
+          'password'=> bcrypt($request->password),
+          'address' => $request->address
+      ]);
     }
 }

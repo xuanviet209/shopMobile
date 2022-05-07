@@ -129,7 +129,7 @@
         <tbody>
         @foreach($orders as $od)
             <tr>
-                <th scope="row">1</th>
+                <th>{{ $od->id }}</th>
                 <td>{{ $od->cus->name }}</td>
                 <td>Otto</td>
             </tr>

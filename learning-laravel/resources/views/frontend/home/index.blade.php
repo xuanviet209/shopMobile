@@ -207,7 +207,7 @@
                                 <div class="col-lg-4 col-sm-6">
                                     <div class="product-item">
                                         <div class="pi-pic">
-                                            <img class="card-img-top" width="50%" height="50%"
+                                            <img class="card-img-top" width="10%" height="10%"
                                                 src="{{ asset('storage/images/' . $item->image) }}" alt="">
                                             <div class="sale pp-sale">Sale</div>
                                             <div class="icon">
