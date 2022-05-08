@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use Session;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Order;
 use App\Models\Cart;
+use App\Models\Coupon;
 use App\Models\OrderDetail;
 use Mail;
 
@@ -72,7 +74,35 @@ class CheckoutController extends Controller
     
     public function checkCoupon(Request $request)
     {
-      $data = $request->all();
-      print_r($data);
+        $data = $request->all();
+        $coupon = Coupon::where('coupon_code',$data['coupon'])->first();
+        if($coupon){
+            $count_coupon = $coupon->count();
+            if($count_coupon > 0){
+                $coupon_session = Session::get('coupon');
+                if($coupon_session == true){
+                    $is_avaiable = 0;
+                    if($is_avaiable==0){
+                        $cou[] = array(
+                            'coupon_code' =>$coupon->coupon_code,
+                            'coupon_condition'=>$coupon->coupon_condition,
+                            'coupon_number' =>$coupon->coupon_number,
+                        );
+                        Session::put('coupon',$cou);
+                    }
+                }else {
+                    $cou[] = array(
+                        'coupon_code' =>$coupon->coupon_code,
+                        'coupon_condition'=>$coupon->coupon_condition,
+                        'coupon_number' =>$coupon->coupon_number,
+                    );
+                    Session::put('coupon',$cou);
+                }
+                Session::save();
+                return redirect()->back()->with('message','Thêm mã giảm giá thành công');
+            }
+        }else {
+            return redirect()->back()->with('message','Thêm mã giảm giá không thành công');
+        }
     }
 }

@@ -19,7 +19,7 @@
                     <div class="sb-nav-link-icon"><i class="fab fa-product-hunt"></i></div>
                     Quản lý sản phẩm
                 </a>
-                <a class="nav-link" href="">
+                <a class="nav-link" href="{{ route('admin.coupon') }}">
                     <div class="sb-nav-link-icon"><i class="fab fa-product-hunt"></i></div>
                     Mã giảm giá
                 </a>

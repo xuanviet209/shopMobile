@@ -47,6 +47,11 @@
     </div>
     <section class="py-5">
         <div class="container px-4 px-lg-5 mt-5">
+            @if(session()->has('message'))
+                <div class="alert alert-success">
+                    {{ session()->get('message') }}
+                </div>
+            @endif
             <div class="row">
                 <div class="col-md-4">
                     <form action="" method="POST" role="form">
@@ -131,14 +136,36 @@
                             <div class="col-lg-5">
                                 <form action="{{ url('/check-coupon') }}" method="POST">
                                     @csrf
-                                    <input type="text" class="form-control" name="coupon" placeholder="Nhập mã giảm giá">
+                                    <input type="text" class="form-control" name="coupon" value="" placeholder="Nhập mã giảm giá">
                                     <input type="submit" class="btn btn-primary" name="check_coupon" value="Tính mã giảm giá">
                                 </form>
                             </div>
                             <div class="col-lg-7">
                                 <div class="proceed-checkout">
                                     <ul>
-                                        <li class="cart-total">Total <span>{{ \Cart::priceTotal() }}$</span></li>
+                                        <li class="cart-total">Tổng tiền <span>{{ \Cart::priceTotal() }}$</span></li>
+                                        <li class="cart-total">
+                                            @if(Session::get('coupon'))
+                                                @foreach(Session::get('coupon') as $key => $cou)
+                                                    @if($cou['coupon_condition'] == 1)
+                                                        <li class="cart-total">Mã giảm : <span>{{ $cou['coupon_number'] }} %</span></li>
+                                                            @php
+                                                                $total_coupon=(\Cart::priceTotal()*$cou['coupon_number'])/100;
+                                                                echo '<li>Tổng giảm :' .number_format($total_coupon).'$</li>';
+                                                            @endphp
+                                                        <li class="cart-total">Tổng đã giảm : <span>{{ number_format(\Cart::priceTotal()-$total_coupon)}}$</span></li>
+                                                    @elseif($cou['coupon_condition'] == 2)
+                                                        <li class="cart-total">Mã giảm : <span>{{ number_format($cou['coupon_number']) }} $</span></li>
+                                                        <p>
+                                                            @php
+                                                                $total_coupon=\Cart::priceTotal()-$cou['coupon_number'];
+                                                            @endphp
+                                                        </p>
+                                                        <p><li class="cart-total">Tổng đã giảm : <span>{{ number_format($total_coupon)}}$</span></li></p>
+                                                    @endif
+                                                @endforeach
+                                            @endif
+                                        </li>
                                     </ul>
                                 </div>
                             </div>

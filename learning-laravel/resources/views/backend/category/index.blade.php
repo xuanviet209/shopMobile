@@ -40,7 +40,7 @@
               <button id="delete_category_{{ $item->id }}" class="btn btn-danger" onclick="confirm('Bạn có muốn xóa không !'); deleteCategory({{ $item->id }})"> <i class="fas fa-trash"></i></button>
             </td>
           </tr>
-         @endforeach
+        @endforeach
         </tbody>
       </table>
       {{ $categories->links() }}

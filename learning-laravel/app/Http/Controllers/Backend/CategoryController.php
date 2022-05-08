@@ -106,6 +106,10 @@ class CategoryController extends Controller
         'categories' => $delCategory
       ]);
     } else {
+      return response()->json([
+        'cod' => 404,
+        'mess' => 'Error param id'
+      ]);
     }
   }
 }
