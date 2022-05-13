@@ -83,6 +83,7 @@ Route::prefix('admin')
     Route::get('insert-coupon',[CouponController::class,'add'])->name('add.coupon');
     Route::post('handle-insert-coupon',[CouponController::class, 'handleAddCoupon'])->name('handle.add.coupon');
     Route::post('delete-coupon',[CouponController::class, 'deleteCoupon'])->name('delete.coupon');
+    Route::get('send-coupon/{coupon_time}/{coupon_condition}/{coupon_number}/{coupon_code}',[CouponController::class,'sendCoupon']);
 });
 
 Route::prefix('admin')->as('admin.')->group(function () {

@@ -82,7 +82,7 @@
                                 placeholder="Nhập ghi chú của bạn vào đây"
                                 value=""></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">Đặt hàng</button>
+                        <button type="submit" class="btn btn-success mr-5">Đặt hàng</button>
                     </form>
                 </div>
                 <div class="col-md-8">
@@ -133,14 +133,20 @@
                             </table>
                         </div>
                         <div class="row">
-                            <div class="col-lg-5">
+                            <div class="col-lg-3">
+                                <form action="{{ url('/vnpay_payment') }}" method="POST" >
+                                    @csrf
+                                    <button type="submit" class="btn btn-primary" name="redirect">Thanh toán VNPAY</button>
+                                </form>
+                            </div>
+                            <div class="col-lg-4">
                                 <form action="{{ url('/check-coupon') }}" method="POST">
                                     @csrf
                                     <input type="text" class="form-control" name="coupon" value="" placeholder="Nhập mã giảm giá">
-                                    <input type="submit" class="btn btn-primary" name="check_coupon" value="Tính mã giảm giá">
+                                    <input type="submit" class="btn btn-info" name="check_coupon" value="Tính mã giảm giá">
                                 </form>
                             </div>
-                            <div class="col-lg-7">
+                            <div class="col-lg-5">
                                 <div class="proceed-checkout">
                                     <ul>
                                         <li class="cart-total">Tổng tiền <span>{{ \Cart::priceTotal() }}$</span></li>

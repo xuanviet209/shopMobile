@@ -43,8 +43,8 @@ Route::post('home_login',[HomeController::class,'postLogin'])->name('home.login'
 Route::get('checkout',[CheckoutController::class,'form'])->name('checkout');
 Route::post('checkout',[CheckoutController::class,'submitForm'])->name('checkout');
 Route::get('checkout/success',[CheckoutController::class,'success'])->name('checkout.success');
-
 Route::post('/check-coupon',[CheckoutController::class,'checkCoupon']);
+Route::post('/vnpay_payment',[CheckoutController::class,'vnpay_payment']);
 //Đăng ký
 Route::get('create',[CreateController::class,'form'])->name('create');
 Route::post('create',[CreateController::class,'success'])->name('create');

@@ -11,6 +11,11 @@
           <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
       </div>
     </form>
+    @if(session()->has('message'))
+      <div class="alert alert-success">
+          {{ session()->get('message') }}
+      </div>
+    @endif
       <table class="table table-bordered table-hover">
         <thead>
           <tr>
@@ -20,6 +25,7 @@
             <th>Số lượng mã</th>
             <th>Điều kiện giảm giá</th>
             <th>Số giảm</th>
+            <th>Gửi mã giảm giá cho khách hàng</th>
             <th> Action </th>
           </tr>
         </thead>
@@ -56,6 +62,12 @@
                   }
                 ?>
             </td>
+            <td><a href="{{ url('admin/send-coupon',[
+              'coupon_time' => $item->coupon_time,
+              'coupon_condition'=> $item->coupon_condition,
+              'coupon_number' =>$item->coupon_number,
+              'coupon_code' => $item->coupon_code
+            ]) }}" class="btn btn-primary">Gửi mã</a></td>
             <td>
               <button id="delete_coupon_{{ $item->coupon_id}}" class="btn btn-danger" onclick="confirm('Bạn có muốn xóa mã này không !'); deleteCoupon({{ $item->coupon_id }})"><i class="fas fa-trash"></i></button>
             </td>
