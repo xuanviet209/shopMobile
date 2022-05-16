@@ -35,9 +35,9 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-cog"></i></div>
                     Quản lý đặt hàng
                 </a>
-                <a class="nav-link" href="">
+                <a class="nav-link" href="{{ route('admin.detail') }}">
                     <div class="sb-nav-link-icon"><i class="fas fa-cog"></i></div>
-                    Quản lý đơn hàng chi tiết
+                    Quản lý đơn hàng 
                 </a>
                 <a class="nav-link" href="">
                     <div class="sb-nav-link-icon"><i class="fas fa-cog"></i></div>

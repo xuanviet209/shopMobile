@@ -10,6 +10,9 @@ class OrderController extends Controller
 {
     public function index()
     {
-        return view('backend.order.index');
+        $listOrder = Order::paginate(config("constant.paginate"));
+        return view('backend.order.index',[
+            'order' => $listOrder
+        ]);
     }
 }

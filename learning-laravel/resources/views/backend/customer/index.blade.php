@@ -17,6 +17,7 @@
                 <thead>
                     <tr>
                         <th scope="col">STT</th>
+                        <th scope="col">id_KH</th>
                         <th scope="col">Name</th>
                         <th scope="col">Email</th>
                         <th scope="col">Phone</th>
@@ -27,6 +28,7 @@
                     @foreach ($customer as $key => $item)
                         <tr id="rowCustomer_{{ $item->id }}">
                             <td>{{ $key + 1 }}</td>
+                            <td>{{ $item->id }}</td>
                             <td>{{ $item->name }}</td>
                             <td>{{ $item->email }}</td>
                             <td>{{ $item->phone }}</td>

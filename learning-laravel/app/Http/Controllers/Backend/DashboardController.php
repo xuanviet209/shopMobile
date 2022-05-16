@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\User;
 use App\Models\Customer;
 use App\Models\Order;
+use App\Models\OrderDetail;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -45,13 +46,18 @@ class DashboardController extends Controller
         $user_count=User::count();
         $customer_count=Customer::count();
         $orders = Order::where('status',1)->get();
+        $order_detail_count = OrderDetail::count();
+        if(request()->date_form && request()->date_to){
+            $orders = Order::where('status',1)->whereBetween('created_at',[request()->date_form, request()->date_to])->get();
+        }
         return view('backend.dashboard.index',compact(
         'product_count',
         'brand_count',
         'category_count',
         'user_count',
         'customer_count',
-        'orders'
+        'orders',
+        'order_detail_count'
         ));
 
     }

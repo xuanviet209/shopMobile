@@ -39,7 +39,7 @@
                 <div class="col-lg-2 col-md-2">
                     <div class="logo">
                         <a href="#">
-                            <img src="frontend/assets/img/logo.png" alt="">
+                            <img src="frontend/assets/img/text.png" alt="">
                         </a>
                     </div>
                 </div>

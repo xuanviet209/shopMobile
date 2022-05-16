@@ -11,7 +11,7 @@ use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\Backend\CouponController;
-
+use App\Http\Controllers\Backend\DetailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -84,6 +84,10 @@ Route::prefix('admin')
     Route::post('handle-insert-coupon',[CouponController::class, 'handleAddCoupon'])->name('handle.add.coupon');
     Route::post('delete-coupon',[CouponController::class, 'deleteCoupon'])->name('delete.coupon');
     Route::get('send-coupon/{coupon_time}/{coupon_condition}/{coupon_number}/{coupon_code}',[CouponController::class,'sendCoupon']);
+
+    //Order_detail
+    Route::get('order_detail',[DetailController::class,'index'])->name('detail');
+    // Route::get('print_order/{checkout_code}',[DetailController::class,'printOrder']);
 });
 
 Route::prefix('admin')->as('admin.')->group(function () {
